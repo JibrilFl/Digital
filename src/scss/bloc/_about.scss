@@ -1,0 +1,30 @@
+.about {
+    padding-bottom: 190px;
+    background-image: url(../img/header_bg.svg), linear-gradient(0deg, #98C3E8 -30%, rgba(152, 195, 232, 0) 31.12%);
+    background-position: 90% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &__title {
+        font-family: 'Galien';
+        font-size: 64px;
+        line-height: 74px;
+        letter-spacing: 0.04em;
+        max-width: 510px;
+        margin-bottom: 32px;
+
+        color: #1f3f68;
+    }
+
+    &__descr {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0.05em;
+        max-width: 425px;
+        margin-bottom: 70px;
+
+        color: #1F3F68;
+        opacity: 0.6;
+    }
+}

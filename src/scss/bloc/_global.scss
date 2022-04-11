@@ -1,0 +1,56 @@
+body {
+    font-family: Gilroy;
+}
+
+.container {
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0 30px;
+
+    &_p200 {
+        padding: 0 213px;
+    }
+}
+
+.burger {
+    width: 24px;
+    height: 16px;
+    cursor: pointer;
+
+    span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #356EAD;
+    }
+
+    span:not(:last-child) {
+        margin-bottom: 4px;
+    }
+}
+
+.btn {
+    border: none;
+    width: 220px;
+    height: 56px;
+    background: #5A98D0;
+    box-shadow: 5px 10px 20px rgba(53, 110, 173, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 46px;
+    letter-spacing: 0.05em;
+    color: #316099;
+    max-width: 360px;
+}
