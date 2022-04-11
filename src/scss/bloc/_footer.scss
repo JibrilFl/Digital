@@ -1,0 +1,94 @@
+.footer {
+    padding-right: 96px;
+    background-color: #5a98d0;
+    color: #fff;
+
+    a {
+        color: #fff;
+    }
+
+    &__wrapper {
+        padding: 90px 0 64px 96px;
+        background: #316099;
+        border-radius: 0px 200px 0px 0px;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__descr {
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0.05em;
+        opacity: 0.6;
+        max-width: 460px;
+        margin-top: 32px;
+    }
+
+    &__contacts {
+        display: flex;
+    }
+
+    &__afrianska {
+        margin-right: 100px;
+    }
+
+    &__about {
+        margin-right: 80px;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    &__contacts_title {
+        font-size: 20px;
+        line-height: 30px;
+        letter-spacing: 0.05em;
+        margin-bottom: 30px;
+    }
+
+    &__logo_title {
+        font-size: 28px;
+        line-height: 46px;
+        letter-spacing: 0.02em;
+        margin-left: 15px;
+    }
+
+    &__contacts_item {
+        display: flex;
+        align-items: flex-start;
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-right: 16px;
+        }
+    }
+
+    &__contacts_link,
+    &__contacts_addr {
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0.05em;
+    }
+
+    &__contacts_addr {
+        max-width: 260px;
+    }
+
+    &__copy {
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0.05em;
+        opacity: .4;
+        margin-top: 65px;
+    }
+}
