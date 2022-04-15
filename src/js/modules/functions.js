@@ -18,48 +18,49 @@ export function isWebp() {
     });
 }
 
-export function openModal() {
+export function Modal() {
     const btnOpen = document.querySelectorAll('[data-modal]'),
-        btnClose = document.querySelector('[data-close]'),
-        modal = document.querySelector('.form');
+        modal = document.querySelector('.modal');
 
     btnOpen.forEach(item => {
-        item.addEventListener('click', showModal);
+        item.addEventListener('click', openModal);
     });
 
-    btnClose.addEventListener('click', hideModal);
 
     window.addEventListener('keyup', (e) => {
         if (modal.classList.contains('show') && e.code == 'Escape') {
-            hideModal();
+            closeModal();
         }
     });
 
     modal.addEventListener('click', (e) => {
-        if (e.target == modal) {
-            hideModal();
+        if (e.target == modal || e.target.getAttribute('data-close') == '') {
+            closeModal();
         }
     });
 
 
-    function showModal() {
+    function openModal() {
         modal.classList.add('show');
+        modal.classList.remove('hide');
         document.querySelector('body').style.overflow = 'hidden';
     }
 
-    function hideModal() {
+    function closeModal() {
         modal.classList.remove('show');
+        modal.classList.add('hide');
         document.querySelector('body').style.overflow = '';
     }
-}
 
-export function postDataForms() {
+    // form
+
     const forms = document.querySelectorAll('form');
 
     const message = {
         loading: 'Загрузка',
         complete: 'Спасибо! Мы с вами свяжемся, но это не точно &#128515;',
-        fatal: 'Ошибка отправки данных'
+        fatal: 'Ошибка отправки данных',
+        closeIco: "img/close-icon.svg"
     };
 
     forms.forEach(item => {
@@ -71,13 +72,6 @@ export function postDataForms() {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const statusMessage = document.createElement('div');
-            statusMessage.classList.add('modal');
-            statusMessage.innerHTML = `
-                <p>${message.loading}</p>
-            `;
-            form.append(statusMessage);
-
             const request = new XMLHttpRequest();
             request.open('POST', 'files/server.php');
 
@@ -87,22 +81,37 @@ export function postDataForms() {
             request.addEventListener('load', () => {
                 if (request.status === 200) {
                     console.log(request.response);
-                    statusMessage.innerHTML = `
-                        <p>${message.complete}</p>
-                    `;
+                    thanksMessageModal(message.complete);
                     form.reset();
-                    setTimeout(() => {
-                        statusMessage.remove();
-                    }, 2000);
                 } else {
-                    statusMessage.innerHTML = `
-                        <p>${message.fatal}</p>
-                    `;
-                    setTimeout(() => {
-                        statusMessage.remove();
-                    }, 4000);
+                    thanksMessageModal(message.fatal);
                 }
             });
         });
+    }
+
+    function thanksMessageModal(message) {
+        const prevModal = document.querySelector('.modal__wrapper');
+
+        prevModal.classList.add('hide');
+        openModal();
+
+        const thanksModal = document.createElement('div');
+        thanksModal.classList.add('modal__wrapper');
+        thanksModal.innerHTML = `
+            <div class="modal__inner">
+                <div class="modal__closed">
+                    <img src="img/close-icon.svg" alt="close" data-close>
+                </div>
+                <h3 class="modal__title modal__title_mt">${message}</h3>
+            </div>
+        `;
+
+        document.querySelector('.modal').append(thanksModal);
+        setTimeout(() => {
+            thanksModal.remove();
+            prevModal.classList.remove('hide');
+            closeModal();
+        }, 4000);
     }
 }

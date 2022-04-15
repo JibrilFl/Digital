@@ -45,8 +45,9 @@ body {
     letter-spacing: 0.04em;
     color: #FFFFFF;
 
-    &_form {
+    &_modal {
         width: 100%;
+        min-height: 56px;
     }
 }
 
